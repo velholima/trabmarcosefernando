@@ -15,8 +15,6 @@ def carregar_cliente():
                 "razao": coluna[0],
                 "cnpj": coluna[2],
                 "ie": coluna[3],
-                "ata": coluna[4],
-                "contrato": coluna[5]
             }
             lista.append(cliente)
 
@@ -32,8 +30,7 @@ def salvar_cliente(lista):
     arquivo = open("cliente.txt", "w")
 
     for cliente in lista:
-        arquivo.write('{}#{}#{}#{}#{}#{}1\n'.format(cliente['razao'], cliente['nome'], cliente['cnpj'], cliente['ie'],
-                                                      cliente['ata'], cliente['contrato']))
+        arquivo.write('{}#{}#{}#{}1\n'.format(cliente['razao'], cliente['nome'], cliente['cnpj'], cliente['ie']))
 
     arquivo.close()
 
@@ -48,7 +45,7 @@ def existe_cliente(lista, nome):
 
 def adicionar(lista):
     while True:
-        nome = input("Digite o nome do cliente: ")
+        nome = input("Digite o nome do banco que será cadastrado: ")
 
         if not existe_cliente(lista, nome):
             break
@@ -63,8 +60,6 @@ def adicionar(lista):
         "razao": input("Digite a razão social: "),
         "cnpj": input("Digite o cpnj: "),
         "ie": input("Digite a inscrição estadual: "),
-        "ata": input("Digite a ata de assembleia: "),
-        "contrato": input("Digite o contrato social: "),
     }
     lista.append(cliente)
 
@@ -94,8 +89,6 @@ def listar(lista):
             print("\tNome: {}".format(cliente['nome']))
             print("\tCnpj: {}".format(cliente['cnpj']))
             print("\tIe: {}".format(cliente['ie']))
-            print("\tAta: {}".format(cliente['ata']))
-            print("\tContrato: {}".format(cliente['contrato']))
             print("===============================================")
         print("Quantidade de Clientes: {}\n".format(len(lista)))
     else:
@@ -121,6 +114,6 @@ def principal():
             print("Opcão inválida, por favor, digite novamente")
             time.sleep(2)
             os.system("cls")
-
-
+            
+            
 principal()
